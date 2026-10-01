@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Old Site Archive — milottc</title>
+<style>
+:root {
+  --fg: #111111; --muted: #6b6b6b; --faint: #999999;
+  --border: #e8e8e8; --bg: #ffffff; --card: #fafafa;
+  --accent: #4f6df5; --width: 900px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px; line-height: 1.6; color: var(--fg); background: var(--bg);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+.wrap { max-width: var(--width); margin: 0 auto; padding: 0 24px; }
+
+/* Header */
+header.hero { padding: 72px 0 32px; }
+.eyebrow {
+  display: block; font-size: 0.78rem; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--faint); margin-bottom: 16px;
+}
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.2;
+  letter-spacing: -0.025em; font-weight: 600; margin: 0 0 16px; max-width: 620px;
+}
+.lede { font-size: 1.02rem; color: var(--muted); max-width: 600px; margin: 0 0 12px; }
+.lede a { color: var(--fg); }
+
+/* Toolbar */
+.toolbar {
+  position: sticky; top: 0; background: var(--bg);
+  border-bottom: 1px solid var(--border); z-index: 10;
+  padding: 16px 0; margin-top: 24px;
+}
+.toolbar-inner {
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+}
+.search {
+  flex: 1; min-width: 200px; font: inherit; font-size: 0.92rem;
+  padding: 9px 14px; border: 1px solid var(--border); border-radius: 4px;
+  background: #fff; color: var(--fg); transition: border-color 0.15s ease;
+}
+.search:focus { outline: none; border-color: var(--fg); }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip {
+  font: inherit; font-size: 0.8rem; font-weight: 500;
+  padding: 6px 12px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--border); background: transparent; color: var(--muted);
+  transition: all 0.15s ease;
+}
+.chip:hover { border-color: var(--fg); color: var(--fg); }
+.chip.active { background: var(--fg); color: #fff; border-color: var(--fg); }
+
+/* Grid */
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px; padding: 28px 0 48px;
+}
+.card {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 20px; border: 1px solid var(--border); border-radius: 8px;
+  text-decoration: none; color: inherit; background: #fff;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card:hover {
+  border-color: var(--fg); transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+.card-icon { font-size: 1.4rem; line-height: 1; }
+.card-title {
+  font-size: 0.98rem; font-weight: 600; letter-spacing: -0.01em;
+  margin: 0; word-break: break-word;
+}
+.card-desc { font-size: 0.86rem; color: var(--muted); margin: 0; flex: 1; }
+.card-meta {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--faint); font-weight: 500;
+}
+.empty {
+  grid-column: 1 / -1; text-align: center; color: var(--faint);
+  padding: 60px 0; font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--border); padding: 32px 0 56px;
+  font-size: 0.83rem; color: var(--faint);
+}
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+footer a { color: var(--muted); text-decoration: none; }
+footer a:hover { color: var(--fg); }
+
+@media (max-width: 560px) {
+  header.hero { padding: 48px 0 24px; }
+  .grid { grid-template-columns: 1fr; gap: 10px; padding: 20px 0 40px; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero wrap">
+  <span class="eyebrow">Archive</span>
+  <h1>My old website, preserved.</h1>
+  <p class="lede">
+    A collection of small HTML pages, games, and experiments I built years ago.
+    They're rough around the edges, but they still work — and they're still mine.
+  </p>
+  <p class="lede">
+    Source: <a href="https://github.com/milottc/my-old-website" target="_blank" rel="noopener">github.com/milottc/my-old-website</a>
+  </p>
+</header>
+
+<div class="toolbar">
+  <div class="wrap toolbar-inner">
+    <input
+      type="search"
+      id="search"
+      class="search"
+      placeholder="Search files…"
+      aria-label="Search files"
+    />
+    <div class="chips" id="chips"></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="year"></span> milottc</div>
+    <a href="https://github.com/milottc/my-old-website" target="_blank" rel="noopener">View on GitHub →</a>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   CONFIG — point this at wherever the files are served from.
+   Options:
+     GitHub Pages:  "https://milottc.github.io/my-old-website/"
+     jsDelivr CDN:  "https://cdn.jsdelivr.net/gh/milottc/my-old-website@main/"
+     GitHub blob:   "https://github.com/milottc/my-old-website/blob/main/"
+   ========================================================= */
+var BASE_URL = "https://milottc.github.io/my-old-website/";
+
+/* =========================================================
+   FILE LIST
+   ========================================================= */
+var FILES = [
+  // Games
+  { file: "flap.html",      title: "Flap",           category: "Games", icon: "🐦", desc: "A Flappy Bird–style tap game." },
+  { file: "catch.html",     title: "Catch",          category: "Games", icon: "🧺", desc: "Catch falling things before they hit the floor." },
+  { file: "lunchgame.html", title: "Lunch Game",     category: "Games", icon: "🍱", desc: "A tiny lunch-themed browser game." },
+  { file: "draw.html",      title: "Draw",           category: "Games", icon: "🎨", desc: "A simple canvas drawing toy." },
+
+  // Tools
+  { file: "cal.html",       title: "Calculator",     category: "Tools", icon: "🧮", desc: "A basic calculator in the browser." },
+  { file: "clock.html",     title: "Clock",          category: "Tools", icon: "🕐", desc: "A live clock, probably with a nice face." },
+  { file: "htmlcssjs.html", title: "HTML / CSS / JS", category: "Tools", icon: "🧪", desc: "A little playground for the web stack." },
+
+  // Jokes
+  { file: "joke.html",      title: "Joke",           category: "Jokes", icon: "😂", desc: "A joke on a page. That's it." },
+  { file: "joke1.html",     title: "Joke 1",         category: "Jokes", icon: "🤣", desc: "Another joke — the sequel." },
+  { file: "jokebot.html",   title: "Joke Bot",       category: "Jokes", icon: "🤖", desc: "A bot that tells you jokes." },
+  { file: "jokefun.html",   title: "Joke Fun",       category: "Jokes", icon: "🎭", desc: "Jokes, but fun." },
+
+  // Experiments
+  { file: "heart.html",     title: "Heart",          category: "Experiments", icon: "❤️", desc: "A heart animation or shape experiment." },
+  { file: "car.html",       title: "Car",            category: "Experiments", icon: "🚗", desc: "Something involving a car." },
+  { file: "dog.html",       title: "Dog",            category: "Experiments", icon: "🐶", desc: "A dog page, because why not." },
+  { file: "med.html",       title: "Med",            category: "Experiments", icon: "💊", desc: "A medical-themed page." },
+
+  // Site
+  { file: "index%20(3).html", title: "Index (3)",    category: "Site", icon: "📄", desc: "An old version of the site's index page." },
+  { file: "download.zip",     title: "download.zip", category: "Site", icon: "📦", desc: "An archived download bundle." },
+  { file: "download%20(1).zip", title: "download (1).zip", category: "Site", icon: "📦", desc: "Another archived download bundle." },
+  { file: "README.md",        title: "README",       category: "Site", icon: "📘", desc: "The repo's readme file." }
+];
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+var grid = document.getElementById("grid");
+var search = document.getElementById("search");
+var chipsHost = document.getElementById("chips");
+var activeCategory = "All";
+
+var categories = ["All"].concat(
+  FILES.map(function (f) { return f.category; })
+       .filter(function (c, i, a) { return a.indexOf(c) === i; })
+);
+
+function renderChips() {
+  chipsHost.innerHTML = categories.map(function (c) {
+    return '<button type="button" class="chip' +
+           (c === activeCategory ? ' active' : '') +
+           '" data-cat="' + c + '">' + c + '</button>';
+  }).join("");
+  chipsHost.querySelectorAll(".chip").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      activeCategory = btn.dataset.cat;
+      renderChips();
+      renderGrid();
+    });
+  });
+}
+
+function renderGrid() {
+  var q = (search.value || "").toLowerCase().trim();
+  var filtered = FILES.filter(function (f) {
+    var matchCat = activeCategory === "All" || f.category === activeCategory;
+    var matchQ = !q ||
+      f.title.toLowerCase().indexOf(q) >= 0 ||
+      f.file.toLowerCase().indexOf(q) >= 0 ||
+      (f.desc || "").toLowerCase().indexOf(q) >= 0;
+    return matchCat && matchQ;
+  });
+
+  if (!filtered.length) {
+    grid.innerHTML = '<p class="empty">No files match that search.</p>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(function (f) {
+    var href = BASE_URL + f.file;
+    return '<a class="card" href="' + href + '" target="_blank" rel="noopener">' +
+             '<span class="card-icon">' + f.icon + '</span>' +
+             '<h3 class="card-title">' + f.title + '</h3>' +
+             '<p class="card-desc">' + f.desc + '</p>' +
+             '<span class="card-meta">' + f.category + ' · ' + f.file + '</span>' +
+           '</a>';
+  }).join("");
+}
+
+search.addEventListener("input", renderGrid);
+
+/* Init */
+document.getElementById("year").textContent = new Date().getFullYear();
+renderChips();
+renderGrid();
+</script>
+</body>
+</html>
