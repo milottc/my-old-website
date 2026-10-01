@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Driving Game</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #444;
+    }
+
+    canvas {
+      display: block;
+      background: lightgreen;
+    }
+  </style>
+</head>
+<body>
+<canvas id="gameCanvas"></canvas>
+
+<script>
+  const canvas = document.getElementById("gameCanvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let car = {
+    x: canvas.width / 2,
+    y: canvas.height / 2,
+    angle: 0, // radians
+    speed: 2,
+    turnSpeed: Math.PI / 60,
+    width: 40,
+    height: 20
+  };
+
+  function drawCar() {
+    ctx.save();
+    ctx.translate(car.x, car.y);
+    ctx.rotate(car.angle);
+    ctx.fillStyle = "red";
+    ctx.fillRect(-car.width/2, -car.height/2, car.width, car.height);
+    ctx.restore();
+  }
+
+  function update() {
+    car.x += Math.cos(car.angle) * car.speed;
+    car.y += Math.sin(car.angle) * car.speed;
+
+    // Wrap around the edges
+    if (car.x > canvas.width) car.x = 0;
+    if (car.x < 0) car.x = canvas.width;
+    if (car.y > canvas.height) car.y = 0;
+    if (car.y < 0) car.y = canvas.height;
+  }
+
+  // Event Listeners
+  canvas.addEventListener("contextmenu", e => e.preventDefault()); // Disable context menu
+
+  canvas.addEventListener("mousedown", e => {
+    if (e.button === 0) {
+      // Left click
+      car.angle -= car.turnSpeed;
+    } else if (e.button === 2) {
+      // Right click
+      car.angle += car.turnSpeed;
+    }
+  });
+
+  window.addEventListener("wheel", e => {
+    car.speed += e.deltaY * -0.01;
+    car.speed = Math.max(0, Math.min(car.speed, 10));
+  });
+
+  function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    update();
+    drawCar();
+    requestAnimationFrame(loop);
+  }
+
+  loop();
+</script>
+</body>
+</html>

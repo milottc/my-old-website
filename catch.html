@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the Falling Objects</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+        canvas {
+            display: block;
+            background-color: #e0e0e0;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas dimensions
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Player properties
+        const playerWidth = 100;
+        const playerHeight = 20;
+        let playerX = (canvas.width - playerWidth) / 2;
+        let playerY = canvas.height - playerHeight - 10;
+        const playerSpeed = 7;
+
+        // Falling objects properties
+        const objects = [];
+        const objectRadius = 20;
+        const objectSpeedMin = 3;
+        const objectSpeedMax = 6;
+        let score = 0;
+        let lives = 3;
+
+        // Handle key events for player movement
+        let leftArrowPressed = false;
+        let rightArrowPressed = false;
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                leftArrowPressed = true;
+            }
+            if (e.key === 'ArrowRight') {
+                rightArrowPressed = true;
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if (e.key === 'ArrowLeft') {
+                leftArrowPressed = false;
+            }
+            if (e.key === 'ArrowRight') {
+                rightArrowPressed = false;
+            }
+        });
+
+        // Object class for falling items
+        class FallingObject {
+            constructor() {
+                this.x = Math.random() * (canvas.width - objectRadius * 2) + objectRadius;
+                this.y = 0;
+                this.speed = objectSpeedMin + Math.random() * (objectSpeedMax - objectSpeedMin);
+                this.radius = objectRadius;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'red';
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            update() {
+                this.y += this.speed;
+
+                // Check for collision with player
+                if (this.y + this.radius > playerY && this.x > playerX && this.x < playerX + playerWidth) {
+                    score++;
+                    this.reset();
+                }
+
+                // Check if the object hits the ground
+                if (this.y + this.radius > canvas.height) {
+                    lives--;
+                    this.reset();
+                }
+            }
+
+            reset() {
+                this.x = Math.random() * (canvas.width - objectRadius * 2) + objectRadius;
+                this.y = 0;
+                this.speed = objectSpeedMin + Math.random() * (objectSpeedMax - objectSpeedMin);
+            }
+        }
+
+        // Function to create 1 falling object every 2 seconds
+        function createFallingObject() {
+            objects.push(new FallingObject());
+        }
+
+        // Set interval to create 1 object every 2 seconds
+        setInterval(createFallingObject, 2000);
+
+        // Update the game state
+        function update() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Move the player
+            if (leftArrowPressed && playerX > 0) {
+                playerX -= playerSpeed;
+            }
+            if (rightArrowPressed && playerX + playerWidth < canvas.width) {
+                playerX += playerSpeed;
+            }
+
+            // Draw player
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(playerX, playerY, playerWidth, playerHeight);
+
+            // Draw and update falling objects
+            objects.forEach((object, index) => {
+                object.update();
+                object.draw();
+                if (object.y > canvas.height) {
+                    objects.splice(index, 1);
+                }
+            });
+
+            // Draw score and lives
+            ctx.font = '24px Arial';
+            ctx.fillStyle = 'black';
+            ctx.fillText(`Score: ${score}`, 10, 30);
+            ctx.fillText(`Lives: ${lives}`, canvas.width - 100, 30);
+
+            // Game Over
+            if (lives <= 0) {
+                ctx.fillText('Game Over', canvas.width / 2 - 80, canvas.height / 2);
+                return;
+            }
+
+            // Call update again
+            requestAnimationFrame(update);
+        }
+
+        // Start the game
+        update();
+    </script>
+</body>
+</html>

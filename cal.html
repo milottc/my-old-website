@@ -1,0 +1,38 @@
+<!-- Milo's Calculator -->
+<link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
+<div style="font-family: 'Happy Monkey', cursive; max-width: 200px; margin: auto; text-align: center;">
+  <h2>Milo's Calculator</h2>
+  <input id="calc-display" type="text" readonly style="width: 100%; font-size: 20px; text-align: right;">
+  <div id="buttons"></div>
+</div>
+
+<script>
+  const display = document.getElementById("calc-display");
+  const buttons = [
+    "7","8","9","/",
+    "4","5","6","*",
+    "1","2","3","-",
+    "0",".","=","+",
+    "C"
+  ];
+
+  const container = document.getElementById("buttons");
+  buttons.forEach(b => {
+    const btn = document.createElement("button");
+    btn.textContent = b;
+    btn.style = "width: 45px; height: 45px; margin: 2px; font-size: 18px;";
+    btn.onclick = () => {
+      if (b === "C") display.value = "";
+      else if (b === "=") {
+        try {
+          display.value = eval(display.value);
+        } catch {
+          display.value = "Error";
+        }
+      } else {
+        display.value += b;
+      }
+    };
+    container.appendChild(btn);
+  });
+</script>
