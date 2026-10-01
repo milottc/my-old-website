@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Health & ECG Quiz Game</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #ff6347;
+    }
+
+    #question {
+      font-size: 18px;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .btn {
+      background-color: #ff6347;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #ff4500;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #feedback {
+      margin-top: 20px;
+    }
+
+    #level {
+      font-size: 20px;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Heart Health & ECG Quiz Game</h1>
+    <p id="level">Level: 1</p>
+    <p id="question">The heart pumps oxygen through the body. True or False?</p>
+    <div class="buttons">
+      <button id="trueBtn" class="btn">True</button>
+      <button id="falseBtn" class="btn">False</button>
+    </div>
+    <p id="feedback"></p>
+    <button id="nextBtn" class="btn hidden">Next Question</button>
+  </div>
+
+  <script>
+    // JavaScript Code
+    const questions = [
+        { question: "The heart pumps oxygen through the body. True or False?", answer: "True" },
+        { question: "Eating lots of candy is good for your heart. True or False?", answer: "False" },
+        { question: "Exercise helps keep your heart strong. True or False?", answer: "True" },
+        { question: "The heart is a muscle. True or False?", answer: "True" },
+        { question: "The QRS complex in an ECG represents ventricular depolarization. True or False?", answer: "True" },
+        { question: "The P wave in an ECG represents atrial depolarization. True or False?", answer: "True" },
+        { question: "Hyperkalemia can cause tall T waves in an ECG. True or False?", answer: "True" },
+        { question: "The ST segment in an ECG represents the resting membrane potential. True or False?", answer: "False" },
+        { question: "Second-degree AV block involves some P waves without corresponding QRS complexes. True or False?", answer: "True" },
+        { question: "Atrial fibrillation is characterized by irregularly irregular rhythm on an ECG. True or False?", answer: "True" },
+        { question: "Ventricular fibrillation is a life-threatening rhythm seen on an ECG. True or False?", answer: "True" },
+        { question: "Sinus rhythm is the normal rhythm of a healthy heart. True or False?", answer: "True" },
+        { question: "The T wave in an ECG represents ventricular repolarization. True or False?", answer: "True" },
+        { question: "A flat line on an ECG indicates asystole (no electrical activity). True or False?", answer: "True" },
+        { question: "ST elevation in an ECG can indicate myocardial infarction (heart attack). True or False?", answer: "True" },
+        { question: "Wolf-Parkinson-White syndrome involves a short PR interval and delta wave on an ECG. True or False?", answer: "True" },
+        { question: "Bradycardia refers to a heart rate slower than normal (<60 bpm). True or False?", answer:"True"},
+        {question:"Tachycardia refers to a heart rate faster than normal (>100 bpm). True/False",answer:"True"},
+        {question:"Atrial flutter involves sawtooth-like waves on the baseline of an ECG.True/False",answer:"True"}
+    ];
+
+    // Dynamically generate 1000 more questions
+    const additionalQuestions = Array.from({ length: 1000 }, (_, index) => ({
+        question: `Question ${index + 11}: Placeholder text for learning about heart health and ECGs. True or False?`,
+        answer: index % 2 === 0 ? "True" : "False"
+    }));
+
+    // Combine the predefined questions with the dynamically generated ones
+    questions.push(...additionalQuestions);
+
+    let currentQuestionIndex = 0;
+
+    const levelElement = document.getElementById("level");
+    const questionElement = document.getElementById("question");
+    const feedbackElement = document.getElementById("feedback");
+    const trueButton = document.getElementById("trueBtn");
+    const falseButton = document.getElementById("falseBtn");
+    const nextButton = document.getElementById("nextBtn");
+
+    function showQuestion() {
+        const currentQuestion = questions[currentQuestionIndex];
+        questionElement.textContent = currentQuestion.question;
+        feedbackElement.textContent = "";
+        nextButton.classList.add("hidden");
+        levelElement.textContent = `Level ${currentQuestionIndex + 1}`;
+    }
+
+    function checkAnswer(answer) {
+        const currentQuestion = questions[currentQuestionIndex];
+        if (answer === currentQuestion.answer) {
+            feedbackElement.textContent = "Correct! Great job!";
+            feedbackElement.style.color = "green";
+            nextButton.classList.remove("hidden");
+        } else {
+            feedbackElement.textContent = "Oops! That's incorrect.";
+            feedbackElement.style.color = "red";
+            nextButton.classList.remove("hidden");
+        }
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            showQuestion();
+        } else {
+            levelElement.textContent = `Congratulations! You've completed all levels!`;
+            questionElement.textContent = "Conclusion: You've learned a lot about heart health and ECGs! Keep exploring and stay healthy!";
+            trueButton.classList.add("hidden");
+            falseButton.classList.add("hidden");
+            nextButton.classList.add("hidden");
+            feedbackElement.textContent = "";
+        }
+    }
+
+    // Event Listeners
+    document.getElementById("trueBtn").addEventListener("click", function() {
+        checkAnswer("True");
+    });
+
+    document.getElementById("falseBtn").addEventListener("click", function() {
+        checkAnswer("False");
+    });
+
+    document.getElementById("nextBtn").addEventListener("click", function() {
+        nextQuestion();
+    });
+
+    // Initialize the game
+    showQuestion();
+  </script>
+</body>
+</html>

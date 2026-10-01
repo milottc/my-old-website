@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fun Kissing Game</title>
+</head>
+<body>
+    
+    <hr/>
+    
+    
+    <style>
+        body{
+            background-color: pink;
+            font-family: Arial;
+        }
+    </style>
+    <style>
+       hr{
+            line-height: 100px;
+        }
+    </style>
+    <script>
+        var name1 = prompt("Enter the first name:");
+        var name2 = prompt("Enter the second name:");
+        var secret = "K.I.S.S.I.N.G";
+
+        var message = name1 + " and " + name2 + " sitting in a tree, " + secret + "!";
+
+        alert(message);
+        document.body.innerHTML += "<h1>" + message + "</h1>";
+    </script>
+</body>
+</html>

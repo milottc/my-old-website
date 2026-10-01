@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn HTML, CSS, and JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            display: block;
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .example {
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .exercise {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .column {
+            flex: 1;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Learn HTML, CSS, and JavaScript</h1>
+        <p>Interactive lessons to start coding, with examples, exercises, and more!</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>HTML Basics</h2>
+            <p>HTML stands for Hypertext Markup Language. It defines the structure of your web page using various elements like headings, paragraphs, and links.</p>
+            <div class="example">
+                <h3>Example:</h3>
+                <code>
+                    &lt;h1&gt;Welcome to My Website&lt;/h1&gt;<br>
+                    &lt;p&gt;This is a paragraph of text on my page.&lt;/p&gt;<br>
+                    &lt;a href="https://www.example.com"&gt;Click here&lt;/a&gt; to visit my site.
+                </code>
+                <p>This HTML code creates a heading, a paragraph, and a clickable link.</p>
+            </div>
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                
+            <p>Try creating a simple webpage with a heading and a paragraph. Experiment with adding an image:</p>
+              <ul class="tag-list">
+    <li class="tag-item"><strong><code>&lt;a&gt;</code></strong> – Defines a hyperlink. <code>&lt;a href="https://example.com"&gt;Click here&lt;/a&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;abbr&gt;</code></strong> – Defines an abbreviation or acronym. <code>&lt;abbr title="Hypertext Markup Language"&gt;HTML&lt;/abbr&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;address&gt;</code></strong> – Defines contact information. <code>&lt;address&gt;123 Main St, Springfield&lt;/address&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;area&gt;</code></strong> – Defines an area inside an image map. <code>&lt;area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm"&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;article&gt;</code></strong> – Defines an article. <code>&lt;article&gt;Content goes here&lt;/article&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;aside&gt;</code></strong> – Defines content aside from the main content. <code>&lt;aside&gt;Related information&lt;/aside&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;audio&gt;</code></strong> – Defines sound content. <code>&lt;audio controls&gt;&lt;source src="audio.mp3" type="audio/mpeg"&gt;&lt;/audio&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;b&gt;</code></strong> – Defines bold text. <code>&lt;b&gt;This text is bold&lt;/b&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;base&gt;</code></strong> – Specifies the base URL for all relative URLs in a document. <code>&lt;base href="https://example.com/"&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;bdi&gt;</code></strong> – Defines text that should not be affected by surrounding bidirectional text. <code>&lt;bdi&gt;example text&lt;/bdi&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;bdo&gt;</code></strong> – Overrides the current text direction. <code>&lt;bdo dir="rtl"&gt;Hello&lt;/bdo&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;blockquote&gt;</code></strong> – Defines a block of text that is a quotation. <code>&lt;blockquote cite="https://example.com"&gt;&lt;p&gt;Quoted text here&lt;/p&gt;&lt;/blockquote&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;body&gt;</code></strong> – Defines the body of the document. <code>&lt;body&gt;Content goes here&lt;/body&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;br&gt;</code></strong> – Inserts a line break. <code>&lt;p&gt;Line 1&lt;br&gt;Line 2&lt;/p&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;button&gt;</code></strong> – Defines a clickable button. <code>&lt;button&gt;Click me&lt;/button&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;canvas&gt;</code></strong> – Defines graphics, such as drawings or animations. <code>&lt;canvas id="myCanvas" width="200" height="100"&gt;&lt;/canvas&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;caption&gt;</code></strong> – Defines a table caption. <code>&lt;caption&gt;My Table&lt;/caption&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;cite&gt;</code></strong> – Defines the title of a work. <code>&lt;cite&gt;The Great Gatsby&lt;/cite&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;code&gt;</code></strong> – Defines computer code text. <code>&lt;code&gt;var x = 5;&lt;/code&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;col&gt;</code></strong> – Specifies column properties for a <code>&lt;colgroup&gt;</code>. <code>&lt;col style="background-color:yellow"&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;colgroup&gt;</code></strong> – Specifies column groups for a table. <code>&lt;colgroup&gt;&lt;col style="background-color:yellow"&gt;&lt;/colgroup&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;data&gt;</code></strong> – Defines a machine-readable value. <code>&lt;data value="2015"&gt;2015&lt;/data&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;datalist&gt;</code></strong> – Defines a list of pre-defined options for an <code>&lt;input&gt;</code> element. <code>&lt;datalist id="browsers"&gt;&lt;option value="Chrome"&gt;&lt;option value="Firefox"&gt;&lt;/datalist&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;dd&gt;</code></strong> – Defines a description value in a description list. <code>&lt;dd&gt;Definition&lt;/dd&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;del&gt;</code></strong> – Defines deleted text. <code>&lt;del&gt;This is deleted&lt;/del&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;details&gt;</code></strong> – Defines additional information that the user can view or hide. <code>&lt;details&gt;&lt;summary&gt;More info&lt;/summary&gt;Additional content&lt;/details&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;dfn&gt;</code></strong> – Defines a definition term. <code>&lt;dfn&gt;HTML&lt;/dfn&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;div&gt;</code></strong> – Defines a division or section in a document. <code>&lt;div&gt;Content here&lt;/div&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;dl&gt;</code></strong> – Defines a description list. <code>&lt;dl&gt;&lt;dt&gt;Term&lt;/dt&gt;&lt;dd&gt;Description&lt;/dd&gt;&lt;/dl&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;dt&gt;</code></strong> – Defines a term in a description list. <code>&lt;dt&gt;Term&lt;/dt&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;em&gt;</code></strong> – Defines emphasized text. <code>&lt;em&gt;Important&lt;/em&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;embed&gt;</code></strong> – Defines a container for external content (like multimedia). <code>&lt;embed src="video.mp4" type="video/mp4"&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;fieldset&gt;</code></strong> – Defines a group of related elements in a form. <code>&lt;fieldset&gt;&lt;legend&gt;Personal Info&lt;/legend&gt;&lt;/fieldset&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;figcaption&gt;</code></strong> – Defines a caption for a figure. <code>&lt;figcaption&gt;Figure caption&lt;/figcaption&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;figure&gt;</code></strong> – Defines content that is referenced as a single unit. <code>&lt;figure&gt;&lt;img src="image.jpg"&gt;&lt;figcaption&gt;Caption&lt;/figcaption&gt;&lt;/figure&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;footer&gt;</code></strong> – Defines the footer of a document or section. <code>&lt;footer&gt;Footer content&lt;/footer&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;form&gt;</code></strong> – Defines an HTML form for user input. <code>&lt;form&gt;&lt;input type="text"&gt;&lt;/form&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code></strong> – Defines HTML headings. <code>&lt;h1&gt;Heading 1&lt;/h1&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;head&gt;</code></strong> – Defines the head section of a document. <code>&lt;head&gt;&lt;title&gt;My Title&lt;/title&gt;&lt;/head&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;header&gt;</code></strong> – Defines the header of a document or section. <code>&lt;header&gt;Header content&lt;/header&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;hr&gt;</code></strong> – Defines a horizontal rule or thematic break. <code>&lt;hr&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;html&gt;</code></strong> – Defines the root element of an HTML document. <code>&lt;html&gt;Content&lt;/html&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;iframe&gt;</code></strong> – Defines an inline frame. <code>&lt;iframe src="https://example.com"&gt;&lt;/iframe&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;img&gt;</code></strong> – Defines an image. <code>&lt;img src="image.jpg" alt="Image"&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;input&gt;</code></strong> – Defines an input control. <code>&lt;input type="text"&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;ins&gt;</code></strong> – Defines inserted text. <code>&lt;ins&gt;Inserted text&lt;/ins&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;kbd&gt;</code></strong> – Defines keyboard input. <code>&lt;kbd&gt;Ctrl+C&lt;/kbd&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;label&gt;</code></strong> – Defines a label for an <code>&lt;input&gt;</code> element. <code>&lt;label for="name"&gt;Name&lt;/label&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;legend&gt;</code></strong> – Defines a caption for a <code>&lt;fieldset&gt;</code>. <code>&lt;legend&gt;Personal Info&lt;/legend&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;li&gt;</code></strong> – Defines a list item. <code>&lt;ul&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;link&gt;</code></strong> – Defines the relationship between a document and an external resource (like a CSS file). <code>&lt;link rel="stylesheet" href="styles.css"&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;main&gt;</code></strong> – Defines the main content of a document. <code>&lt;main&gt;Main content here&lt;/main&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;map&gt;</code></strong> – Defines an image map. <code>&lt;map name="example"&gt;&lt;area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm"&gt;&lt;/map&gt;</code></li>
+     <ul class="tag-list">
+    <li class="tag-item"><strong><code>&lt;mark&gt;</code></strong> – Defines marked or highlighted text. <code>&lt;mark&gt;Highlighted Text&lt;/mark&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;menu&gt;</code></strong> – Defines a list of commands. <code>&lt;menu&gt;&lt;menuitem&gt;Item&lt;/menuitem&gt;&lt;/menu&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;meta&gt;</code></strong> – Defines metadata about the document. <code>&lt;meta charset="UTF-8"&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;meter&gt;</code></strong> – Defines a scalar measurement within a known range. <code>&lt;meter value="0.7"&gt;70%&lt;/meter&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;nav&gt;</code></strong> – Defines navigation links. <code>&lt;nav&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/nav&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;noscript&gt;</code></strong> – Defines content to be displayed if the browser does not support JavaScript. <code>&lt;noscript&gt;JavaScript is required&lt;/noscript&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;object&gt;</code></strong> – Defines an embedded object (like a multimedia file). <code>&lt;object data="movie.swf" type="application/x-shockwave-flash"&gt;&lt;/object&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;ol&gt;</code></strong> – Defines an ordered list. <code>&lt;ol&gt;&lt;li&gt;Item 1&lt;/li&gt;&lt;/ol&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;optgroup&gt;</code></strong> – Defines a group of options in a <code>&lt;select&gt;</code> dropdown. <code>&lt;optgroup label="Group 1"&gt;&lt;option&gt;Option 1&lt;/option&gt;&lt;/optgroup&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;option&gt;</code></strong> – Defines an option in a dropdown list. <code>&lt;option value="1"&gt;Option 1&lt;/option&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;output&gt;</code></strong> – Defines the result of a calculation. <code>&lt;output for="a,b" name="result"&gt;Result here&lt;/output&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;p&gt;</code></strong> – Defines a paragraph. <code>&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;param&gt;</code></strong> – Defines a parameter for an object. <code>&lt;param name="autoplay" value="true"&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;picture&gt;</code></strong> – Defines multiple image resources for responsive images. <code>&lt;picture&gt;&lt;source media="(min-width: 600px)" srcset="image.jpg"&gt;&lt;img src="image-small.jpg"&gt;&lt;/picture&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;pre&gt;</code></strong> – Defines preformatted text. <code>&lt;pre&gt;Text with whitespace&lt;/pre&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;progress&gt;</code></strong> – Defines the progress of a task. <code>&lt;progress value="70" max="100"&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;q&gt;</code></strong> – Defines a short quotation. <code>&lt;q&gt;This is a quote.&lt;/q&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;rp&gt;</code></strong> – Defines parentheses for browsers that do not support ruby annotations. <code>&lt;rp&gt;(&lt;/rp&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;rt&gt;</code></strong> – Defines the ruby text component of a ruby annotation. <code>&lt;rt&gt;Pronunciation&lt;/rt&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;ruby&gt;</code></strong> – Defines a ruby annotation, typically for East Asian typography. <code>&lt;ruby&gt;漢字&lt;rt&gt;Kanji&lt;/rt&gt;&lt;/ruby&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;s&gt;</code></strong> – Defines text that is no longer accurate or relevant. <code>&lt;s&gt;Strikethrough text&lt;/s&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;samp&gt;</code></strong> – Defines sample output from a computer program. <code>&lt;samp&gt;Console Output&lt;/samp&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;script&gt;</code></strong> – Defines client-side JavaScript. <code>&lt;script&gt;alert('Hello!')&lt;/script&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;section&gt;</code></strong> – Defines a section of content. <code>&lt;section&gt;Content here&lt;/section&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;select&gt;</code></strong> – Defines a dropdown list. <code>&lt;select&gt;&lt;option&gt;Option 1&lt;/option&gt;&lt;/select&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;small&gt;</code></strong> – Defines smaller text. <code>&lt;small&gt;Small text&lt;/small&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;source&gt;</code></strong> – Defines multiple media resources for elements like <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code>. <code>&lt;source src="video.mp4" type="video/mp4"&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;span&gt;</code></strong> – Defines a section in a document. <code>&lt;span&gt;Inline text&lt;/span&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;strong&gt;</code></strong> – Defines important text (bold). <code>&lt;strong&gt;Important text&lt;/strong&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;style&gt;</code></strong> – Defines style information for a document (CSS). <code>&lt;style&gt;body { color: red; }&lt;/style&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;sub&gt;</code></strong> – Defines subscript text. <code>&lt;sub&gt;H&lt;/sub&gt;2O</code></li>
+    <li class="tag-item"><strong><code>&lt;summary&gt;</code></strong> – Defines a summary for a <code>&lt;details&gt;</code> element. <code>&lt;summary&gt;More Info&lt;/summary&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;sup&gt;</code></strong> – Defines superscript text. <code>&lt;sup&gt;2&lt;/sup&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;table&gt;</code></strong> – Defines a table. <code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;Cell&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;tbody&gt;</code></strong> – Groups the body content in a table. <code>&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Cell&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;td&gt;</code></strong> – Defines a cell in a table. <code>&lt;td&gt;Data&lt;/td&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;template&gt;</code></strong> – Defines a template for reusable content. <code>&lt;template&gt;&lt;p&gt;This is a template&lt;/p&gt;&lt;/template&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;textarea&gt;</code></strong> – Defines a multiline input control. <code>&lt;textarea&gt;Default text&lt;/textarea&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;tfoot&gt;</code></strong> – Groups the footer content in a table. <code>&lt;tfoot&gt;&lt;tr&gt;&lt;td&gt;Footer&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;th&gt;</code></strong> – Defines a header cell in a table. <code>&lt;th&gt;Header&lt;/th&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;thead&gt;</code></strong> – Groups the header content in a table. <code>&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Header&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;time&gt;</code></strong> – Defines a specific time (e.g., a date or time). <code>&lt;time datetime="2025-04-26"&gt;April 26, 2025&lt;/time&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;title&gt;</code></strong> – Defines the title of the document. <code>&lt;title&gt;Document Title&lt;/title&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;tr&gt;</code></strong> – Defines a row in a table. <code>&lt;tr&gt;&lt;td&gt;Data&lt;/td&gt;&lt;/tr&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;track&gt;</code></strong> – Defines text tracks for <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code>. <code>&lt;track src="subtitles_en.vtt" kind="subtitles" srclang="en"&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;u&gt;</code></strong> – Defines underlined text. <code>&lt;u&gt;Underlined text&lt;/u&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;ul&gt;</code></strong> – Defines an unordered list. <code>&lt;ul&gt;&lt;li&gt;Item 1&lt;/li&gt;&lt;/ul&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;var&gt;</code></strong> – Defines a variable in a script. <code>&lt;var&gt;x = 10&lt;/var&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;video&gt;</code></strong> – Defines a video. <code>&lt;video src="movie.mp4" controls&gt;&lt;/video&gt;</code></li>
+    <li class="tag-item"><strong><code>&lt;wbr&gt;</code></strong> – Suggests a line break opportunity. <code>&lt;wbr&gt;word&lt;/wbr&gt;</code></li> 
+              <code>
+                    &lt;img src="image.jpg" alt="A description of the image"&gt;
+                </code>
+            </div>
+        </section>
+
+        <section>
+            <h2>CSS Basics</h2>
+            <p>CSS (Cascading Style Sheets) is used to control the look and feel of the HTML elements. You can change colors, fonts, layouts, and more.</p>
+            <div class="example">
+                <h3>Example:</h3>
+                <code>
+                    body {<br>
+                    &nbsp;&nbsp;background-color: #f4f4f9;<br>
+                    &nbsp;&nbsp;font-family: Arial, sans-serif;<br>
+                    }<br><br>
+                    h1 {<br>
+                    &nbsp;&nbsp;color: #4CAF50;<br>
+                    &nbsp;&nbsp;text-align: center;<br>
+                    }
+                </code>
+                <p>This CSS code sets the background color of the page and changes the font and color of the <code>&lt;h1&gt;</code> element.</p>
+            </div>
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                <p>Change the color of the body text on your page to blue, and center the <code>&lt;p&gt;</code> tags.</p>
+                <code>
+                    p {<br>
+                    &nbsp;&nbsp;color: blue;<br>
+                    &nbsp;&nbsp;text-align: center;<br>
+                    }
+                </code>
+            </div>
+        </section>
+
+        <section>
+            <h2>JavaScript Basics</h2>
+            <p>JavaScript is a programming language used to make your website interactive. With it, you can create things like buttons that do something when clicked.</p>
+            <div class="example">
+                <h3>Example:</h3>
+                <code>
+                    &lt;button onclick="alert('Hello, world!')"&gt;Click Me&lt;/button&gt;
+                </code>
+                <p>This button, when clicked, will show a pop-up with the message "Hello, world!"</p>
+            </div>
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                <p>Modify the above code to show a custom message in the alert box. You can change the text inside the <code>alert()</code> function.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Advanced HTML Elements</h2>
+            <p>Let's explore some advanced HTML elements:</p>
+            <div class="row">
+                <div class="column">
+                    <h3>Forms</h3>
+                    <p>Forms allow users to enter data.</p>
+                    <div class="example">
+                        <h3>Example:</h3>
+                        <code>
+                            &lt;form&gt;<br>
+                            &nbsp;&nbsp;&lt;label for="name"&gt;Name:&lt;/label&gt;<br>
+                            &nbsp;&nbsp;&lt;input type="text" id="name" name="name"&gt;<br>
+                            &nbsp;&nbsp;&lt;input type="submit" value="Submit"&gt;<br>
+                            &lt;/form&gt;
+                        </code>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3>Tables</h3>
+                    <p>Tables are useful for displaying data in rows and columns.</p>
+                    <div class="example">
+                        <h3>Example:</h3>
+                        <code>
+                            &lt;table&gt;<br>
+                            &nbsp;&nbsp;&lt;tr&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Name&lt;/th&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Age&lt;/th&gt;<br>
+                            &nbsp;&nbsp;&lt;/tr&gt;<br>
+                            &nbsp;&nbsp;&lt;tr&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;John&lt;/td&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;25&lt;/td&gt;<br>
+                            &nbsp;&nbsp;&lt;/tr&gt;<br>
+                            &lt;/table&gt;
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Intermediate JavaScript</h2>
+            <p>JavaScript allows us to create dynamic content by using variables, functions, and more.</p>
+            <div class="example">
+                <h3>Example:</h3>
+                <code>
+                    let age = 10;<br>
+                    function greet() {<br>
+                    &nbsp;&nbsp;alert('Hello! You are ' + age + ' years old.');<br>
+                    }<br><br>
+                    greet();
+                </code>
+                <p>This JavaScript code uses a variable <code>age</code> and a function <code>greet()</code> to show a personalized message when called.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Learn HTML, CSS, and JavaScript</p>
+    </footer>
+</body>
+</html>

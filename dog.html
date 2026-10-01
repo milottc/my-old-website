@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartoon Dog Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Prevents scrollbars */
+            background-color: #f0f0f0;
+        }
+        canvas {
+            display: block;
+            background-color: #87CEEB; /* Sky Blue */
+            margin: auto;
+        }
+        #score {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="score">Score: 0</div>
+    <canvas id="gameCanvas"></canvas>
+    
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas size to fit the screen
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Dog object with realistic cartoon style
+        const dog = {
+            x: canvas.width / 2,
+            y: canvas.height - 100,
+            width: 50,
+            height: 50,
+            speed: 5,
+            color: '#8B4513', // Brown color for the dog
+            dx: 0,
+            dy: 0,
+            draw: function() {
+                // Dog's body (brown rectangle)
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+
+                // Dog's head (circle)
+                ctx.fillStyle = '#D2691E'; // Lighter brown for the head
+                ctx.beginPath();
+                ctx.arc(this.x + 25, this.y - 20, 25, 0, Math.PI * 2); // Circle for head
+                ctx.fill();
+
+                // Dog's ears (triangles)
+                ctx.fillStyle = '#8B4513';
+                ctx.beginPath();
+                ctx.moveTo(this.x + 5, this.y - 40);
+                ctx.lineTo(this.x - 10, this.y - 55);
+                ctx.lineTo(this.x + 15, this.y - 55);
+                ctx.closePath();
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.moveTo(this.x + 45, this.y - 40);
+                ctx.lineTo(this.x + 60, this.y - 55);
+                ctx.lineTo(this.x + 35, this.y - 55);
+                ctx.closePath();
+                ctx.fill();
+
+                // Dog's eyes (circles)
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.arc(this.x + 15, this.y - 25, 5, 0, Math.PI * 2); // Left eye
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(this.x + 35, this.y - 25, 5, 0, Math.PI * 2); // Right eye
+                ctx.fill();
+
+                // Dog's nose (small black circle)
+                ctx.fillStyle = 'black';
+                ctx.beginPath();
+                ctx.arc(this.x + 25, this.y - 5, 4, 0, Math.PI * 2); // Nose
+                ctx.fill();
+
+                // Dog's tail (line)
+                ctx.strokeStyle = '#8B4513';
+                ctx.lineWidth = 5;
+                ctx.beginPath();
+                ctx.moveTo(this.x + 5, this.y + 20);
+                ctx.lineTo(this.x - 20, this.y + 30);
+                ctx.stroke();
+            }
+        };
+
+        // Cheese object (realistic looking cheese)
+        const cheese = {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            width: 40,
+            height: 40,
+            color: 'yellow',
+            draw: function() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y); // Top point of triangle (cheese)
+                ctx.lineTo(this.x + this.width, this.y); // Right side
+                ctx.lineTo(this.x + this.width / 2, this.y - this.height); // Bottom middle
+                ctx.closePath();
+                ctx.fill();
+
+                // Draw holes in the cheese
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.arc(this.x + 10, this.y - 10, 5, 0, Math.PI * 2); // Hole 1
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(this.x + 30, this.y - 20, 5, 0, Math.PI * 2); // Hole 2
+                ctx.fill();
+            }
+        };
+
+        // Bone object (realistic bone shape)
+        const bone = {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            width: 60,
+            height: 20,
+            color: 'lightgray',
+            draw: function() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y); // Left side of bone
+                ctx.lineTo(this.x + this.width, this.y); // Right side of bone
+                ctx.lineTo(this.x + this.width - 10, this.y + 10); // Right bottom
+                ctx.lineTo(this.x + 10, this.y + 10); // Left bottom
+                ctx.closePath();
+                ctx.fill();
+            }
+        };
+
+        // Score
+        let score = 0;
+
+        // Movement based on arrow keys
+        function moveDog() {
+            dog.x += dog.dx;
+            dog.y += dog.dy;
+
+            // Prevent dog from going off-screen
+            if (dog.x < 0) dog.x = 0;
+            if (dog.x + dog.width > canvas.width) dog.x = canvas.width - dog.width;
+            if (dog.y < 0) dog.y = 0;
+            if (dog.y + dog.height > canvas.height) dog.y = canvas.height - dog.height;
+        }
+
+        // Draw objects
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the dog
+            dog.draw();
+
+            // Draw the cheese
+            cheese.draw();
+
+            // Draw the bone
+            bone.draw();
+
+            // Draw the score
+            ctx.font = '24px Arial';
+            ctx.fillStyle = 'white';
+            ctx.fillText('Score: ' + score, 20, 40);
+        }
+
+        // Collision detection
+        function checkCollision() {
+            // Dog eats cheese
+            if (dog.x < cheese.x + cheese.width && dog.x + dog.width > cheese.x &&
+                dog.y < cheese.y + cheese.height && dog.y + dog.height > cheese.y) {
+                // Move cheese to a new random position
+                cheese.x = Math.random() * canvas.width;
+                cheese.y = Math.random() * canvas.height;
+                score += 1; // Increase score by 1
+            }
+
+            // Dog hits bone
+            if (dog.x < bone.x + bone.width && dog.x + dog.width > bone.x &&
+                dog.y < bone.y + bone.height && dog.y + dog.height > bone.y) {
+                score -= 1; // Decrease score by 1 if dog hits bone
+                // Reset bone position
+                bone.x = Math.random() * canvas.width;
+                bone.y = Math.random() * canvas.height;
+            }
+        }
+
+        // Update game state
+        function update() {
+            moveDog();
+            checkCollision();
+            draw();
+            requestAnimationFrame(update);
+        }
+
+        // Event listener for keyboard input (arrow keys)
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowUp') dog.dy = -dog.speed;
+            if (e.key === 'ArrowDown') dog.dy = dog.speed;
+            if (e.key === 'ArrowLeft') dog.dx = -dog.speed;
+            if (e.key === 'ArrowRight') dog.dx = dog.speed;
+        });
+
+        window.addEventListener('keyup', function(e) {
+            if (e.key === 'ArrowUp' || e.key === 'ArrowDown') dog.dy = 0;
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') dog.dx = 0;
+        });
+
+        // Start the game loop
+        update();
+    </script>
+</body>
+</html>

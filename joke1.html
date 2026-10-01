@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Harder Math Quiz</title>
+  </head>
+  <body>
+    <h1>Harder Math Question!</h1>
+      <button onclick="askHardQuestion()">Start Quiz</button>
+
+        <script>
+            function askHardQuestion() {
+                  const questions = [
+                          {
+                                    q: "Solve for x: 2x - 7 = 3x + 5",
+                                              a: -12
+                                                      },
+                                                              {
+                                                                        q: "What is 3/4 × 2/5?",
+                                                                                  a: 0.3
+                                                                                          },
+                                                                                                  {
+                                                                                                            q: "If x/3 = 5, what is x?",
+                                                                                                                      a: 15
+                                                                                                                              },
+                                                                                                                                      {
+                                                                                                                                                q: "What is the square root of 144?",
+                                                                                                                                                          a: 12
+                                                                                                                                                                  },
+                                                                                                                                                                          {
+                                                                                                                                                                                    q: "Solve for x: 4(x - 2) = 2x + 6",
+                                                                                                                                                                                              a: 7
+                                                                                                                                                                                                      }
+                                                                                                                                                                                                            ];
+
+                                                                                                                                                                                                                  const randomIndex = Math.floor(Math.random() * questions.length);
+                                                                                                                                                                                                                        const selected = questions[randomIndex];
+                                                                                                                                                                                                                              const userAnswer = prompt(selected.q);
+
+                                                                                                                                                                                                                                    // Convert answer to float and compare
+                                                                                                                                                                                                                                          if (Math.abs(parseFloat(userAnswer) - selected.a) < 0.01) {
+                                                                                                                                                                                                                                                  alert("Correct! Great work!");
+
+                                                                                                                                                                                                                                                          const age = prompt("Are you 14 or older? Please enter your age:");
+                                                                                                                                                                                                                                                                  if (parseInt(age) >= 14) {
+                                                                                                                                                                                                                                                                            window.location.href = "http://milottc.great-site.net/joke.html"; // Redirect to joke page
+                                                                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                                                                              alert("You're too young for the joke!");
+                                                                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                                                                                                    alert("Not quite. The correct answer is " + selected.a);
+                                                                                                                                                                                                                                                                                                                            window.location.href = "http://milottc.great-site.net/uhoh.html"; // Redirect to uhoh page
+                                                                                                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                                                                                                        </script>
+                                                                                                                                                                                                                                                                                                                                        </body>
+                                                                                                                                                                                                                                                                                                                                        </html>
+                                                                                                                                                                                                                                                                                                                                        

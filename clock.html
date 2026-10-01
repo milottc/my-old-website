@@ -1,0 +1,21 @@
+<div id="clock" style="font-size: 24px; font-family: comic sans ms,comic neue, comic relief, arial;background-color:lightblue;"></div>
+<script>
+  setInterval(() => {
+    const now = new Date();
+    document.getElementById("clock").textContent = now.toLocaleTimeString("en-CA");
+  }, 1000);
+</script>
+<p id="countdown"></p>
+<script>
+  const target = new Date("2025-12-25T00:00:00"); // Christmas!
+  const countdown = document.getElementById("countdown");
+
+  setInterval(() => {
+    const now = new Date();
+    const diff = target - now;
+    if (diff < 0) return countdown.textContent = "🎉 It's time!";
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    countdown.textContent = `${days} days until 🎄 Christmas`;
+  }, 1000);
+</script>
+
