@@ -33,6 +33,21 @@ h1 {
 .lede { font-size: 1.02rem; color: var(--muted); max-width: 600px; margin: 0 0 12px; }
 .lede a { color: var(--fg); }
 
+/* Hero CTA */
+.hero-cta {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px;
+}
+.btn {
+  display: inline-block; font: inherit; font-size: 0.9rem; font-weight: 500;
+  padding: 10px 18px; border-radius: 4px; text-decoration: none;
+  border: 1px solid transparent; cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.btn-primary { background: var(--fg); color: #fff; }
+.btn-primary:hover { background: #2a2a2a; }
+.btn-ghost { background: transparent; color: var(--fg); border-color: var(--border); }
+.btn-ghost:hover { border-color: var(--fg); }
+
 /* Toolbar */
 .toolbar {
   position: sticky; top: 0; background: var(--bg);
@@ -73,6 +88,11 @@ h1 {
   border-color: var(--fg); transform: translateY(-2px);
   box-shadow: 0 4px 14px rgba(0,0,0,0.05);
 }
+.card.featured {
+  background: linear-gradient(135deg, #f5f7ff 0%, #ffffff 100%);
+  border-color: #d9e0ff;
+}
+.card.featured:hover { border-color: var(--accent); }
 .card-icon { font-size: 1.4rem; line-height: 1; }
 .card-title {
   font-size: 0.98rem; font-weight: 600; letter-spacing: -0.01em;
@@ -115,6 +135,10 @@ footer a:hover { color: var(--fg); }
   <p class="lede">
     Source: <a href="https://github.com/milottc/my-old-website" target="_blank" rel="noopener">github.com/milottc/my-old-website</a>
   </p>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="https://milottc.great-site.net/guestbook/" target="_blank" rel="noopener">✍️ Sign the guestbook</a>
+    <a class="btn btn-ghost" href="https://github.com/milottc/my-old-website" target="_blank" rel="noopener">View source on GitHub</a>
+  </div>
 </header>
 
 <div class="toolbar">
@@ -143,18 +167,20 @@ footer a:hover { color: var(--fg); }
 
 <script>
 /* =========================================================
-   CONFIG — point this at wherever the files are served from.
-   Options:
-     GitHub Pages:  "https://milottc.github.io/my-old-website/"
-     jsDelivr CDN:  "https://cdn.jsdelivr.net/gh/milottc/my-old-website@main/"
-     GitHub blob:   "https://github.com/milottc/my-old-website/blob/main/"
+   CONFIG
    ========================================================= */
 var BASE_URL = "https://milottc.github.io/my-old-website/";
+var GUESTBOOK_URL = "https://milottc.great-site.net/guestbook/";
 
 /* =========================================================
    FILE LIST
    ========================================================= */
 var FILES = [
+  // Guestbook (featured, external)
+  { file: GUESTBOOK_URL, title: "Guestbook", category: "Site", icon: "✍️",
+    desc: "Say hi — leave a message in the guestbook.",
+    external: true, featured: true },
+
   // Games
   { file: "flap.html",      title: "Flap",           category: "Games", icon: "🐦", desc: "A Flappy Bird–style tap game." },
   { file: "catch.html",     title: "Catch",          category: "Games", icon: "🧺", desc: "Catch falling things before they hit the floor." },
@@ -230,12 +256,15 @@ function renderGrid() {
   }
 
   grid.innerHTML = filtered.map(function (f) {
-    var href = BASE_URL + f.file;
-    return '<a class="card" href="' + href + '" target="_blank" rel="noopener">' +
+    var href = f.external ? f.file : BASE_URL + f.file;
+    var meta = f.external
+      ? f.category + " · external"
+      : f.category + " · " + f.file;
+    return '<a class="card' + (f.featured ? ' featured' : '') + '" href="' + href + '" target="_blank" rel="noopener">' +
              '<span class="card-icon">' + f.icon + '</span>' +
              '<h3 class="card-title">' + f.title + '</h3>' +
              '<p class="card-desc">' + f.desc + '</p>' +
-             '<span class="card-meta">' + f.category + ' · ' + f.file + '</span>' +
+             '<span class="card-meta">' + meta + '</span>' +
            '</a>';
   }).join("");
 }
